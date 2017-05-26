@@ -2,6 +2,7 @@
 from flask import Flask, url_for, render_template, g, request, send_from_directory, current_app
 import sys;reload(sys);sys.setdefaultencoding('utf-8')
 from clannad_novel import clannad_novel
+from tieba_search import tieba_search
 app = Flask(__name__)
 app.debug = True
 
@@ -16,6 +17,15 @@ def icon():
 @app.route('/', methods = ['get', 'post'])
 def hello():
 	return clannad_novel.hello()
+
+
+@app.route('/tiebasearch')
+def tiebasearch():
+	return tieba_search.tieba_search()
+
+@app.route('/tiebasearch/query', methods = ['post'])
+def tieba_search_query():
+	return tieba_search.query()
 
 if __name__ == '__main__':
 	app.run(host = '0.0.0.0', threaded=False, port = 12300)
