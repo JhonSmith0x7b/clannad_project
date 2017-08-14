@@ -3,8 +3,11 @@ from flask import Flask, url_for, render_template, g, request, send_from_directo
 import sys;reload(sys);sys.setdefaultencoding('utf-8')
 from clannad_novel import clannad_novel
 from tieba_search import tieba_search
+from get_sen.index import get_sen
+import os
 app = Flask(__name__)
 app.debug = True
+app.register_blueprint(get_sen)
 
 
 
