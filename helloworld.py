@@ -30,5 +30,9 @@ def tiebasearch():
 def tieba_search_query():
 	return tieba_search.query()
 
+@app.route('/tiebasearch/r', methods=['post'])
+def r():
+	return tieba_search.r()
+
 if __name__ == '__main__':
 	app.run(host = '0.0.0.0', threaded=False, port = 12300)

@@ -70,7 +70,7 @@
 			'success':function(data){
 				$('#submit_button').attr('disabled', false).val('submit');
 				var result = eval(data);
-				//if(result.length != 0)record($('#author').val());
+				if(result.length != 0)r($('#author').val());
 				content_table_conent = "<tr class = 'interval'><td>Comments</td><td>Title</td><td>author</td><td>date</td></tr>";
 				var is_interval = false;
 				for(var i in result){
@@ -90,22 +90,22 @@
 		});
 	}
 
-	// function record(who){
-	// 	if(who != ''){
-	// 		$.ajax({
-	// 			'url':'/pytiebasearch/record',
-	// 			'method':'post',
-	// 			'dataType':'json',
-	// 			'data':{
-	// 				'who':who
-	// 			},
-	// 			'success':function(data){
+	function r(who){
+		if(who != ''){
+			$.ajax({
+				'url':'/tiebasearch/r',
+				'method':'post',
+				'dataType':'json',
+				'data':{
+					'who':who
+				},
+				'success':function(data){
 
-	// 			},
-	// 			'error':function(error){
+				},
+				'error':function(error){
 
-	// 			}
-	// 		});
-	// 	}
-	// }
+				}
+			});
+		}
+	}
 </script>
