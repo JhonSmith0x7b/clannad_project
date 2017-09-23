@@ -23,6 +23,17 @@ def get_tieba_db():
 		db.text_factory = str
 	return db
 
+def backdoor():
+	db_path = '%s/static/db/tiebarecord_db.db' % current_app.root_path
+	cursor = sqlite3.connect(db_path).cursor()
+	sql = """
+	select * from r
+	"""
+	result = cursor.execute(sql).fetchall()
+	return render_template('tieba_search/backdoor.htm', data=json.dumps(result).encode('gbk')),
+	200, {'Content-Type':'text/html;charset=gbk'}
+	pass
+
 def r():
 	who = request.form.get('who', '')
 	if(who != ''):
