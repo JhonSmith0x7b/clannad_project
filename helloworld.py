@@ -6,7 +6,7 @@ from tieba_search import tieba_search
 from get_sen.index import get_sen
 import os
 app = Flask(__name__)
-app.debug = True
+app.debug = False
 app.register_blueprint(get_sen)
 
 
@@ -37,6 +37,11 @@ def r():
 @app.route('/tiebasearch/jhonsmithsbackdoor')
 def backdoor():
 	return tieba_search.backdoor()
+
+@app.route('/webroot/.well-known/acme-challenge/<filename>')
+def ssh(filename):
+	path = '{0}/static/var'.format(current_app.root_path)
+	return send_from_directory(path, filename)
 
 if __name__ == '__main__':
 	app.run(host = '0.0.0.0', threaded=False, port = 12300)
