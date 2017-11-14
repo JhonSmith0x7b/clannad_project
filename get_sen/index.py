@@ -103,14 +103,14 @@ def send_font(path):
 def get_random_sentence():
 	db = sqlite3.connect(os.path.join(current_app.root_path, 'get_sen/static/juzimi_db.db'))
 	sql = """
-	select * from juzimi_table order by random() limit 1
+	select * from jzm_object order by random() limit 1
 	"""
 	cursor = db.cursor()
 	result = cursor.execute(sql).fetchall()
 	main = {}
 	if result[0] != '':
-		main['content'] = result[0][0]
-		main['author'] = result[0][1]
+		main['content'] = result[0][4]
+		main['author'] = result[0][2]
 		main['anime'] = result[0][3]
 	return main
 	pass
